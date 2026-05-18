@@ -2,7 +2,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config, ThemeConfig } from '@docusaurus/types';
 import type { Options as themeClassicOptions } from '@docusaurus/theme-classic';
 import type { Options as pluginContentDocsOptions } from '@docusaurus/plugin-content-docs';
-import type { Options as pluginContentPagesOptions } from '@docusaurus/plugin-content-pages';
 import type { Options as pluginClientRedirectsOptions } from '@docusaurus/plugin-client-redirects';
 import type { Options as pluginSitemapOptions } from '@docusaurus/plugin-sitemap';
 import type { Options as pluginGoogleGtagOptions } from '@docusaurus/plugin-google-gtag';
@@ -13,11 +12,12 @@ import type { Options as pluginSvgrOptions } from '@docusaurus/plugin-svgr';
 const config: Config = {
   title: 'Wiki Minecraft-France Survie',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/endy.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    faster: false,
   },
 
   // Set the production url of your site here
@@ -28,8 +28,9 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Minecraft-France Survie', // Usually your GitHub org/user name.
+  organizationName: 'Minecraft-France-FR', // Usually your GitHub org/user name.
   projectName: 'Wiki', // Usually your repo name.
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
 
@@ -41,6 +42,8 @@ const config: Config = {
     locales: ['fr'],
   },
 
+  staticDirectories: ['static'],
+
   plugins: [
     [
       '@docusaurus/theme-classic',
@@ -51,18 +54,10 @@ const config: Config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        sidebarPath: './sidebars.ts',
+        path: 'src/wiki',
+        routeBasePath: '/',
       } satisfies pluginContentDocsOptions,
-    ],
-    [
-      '@docusaurus/plugin-content-pages',
-      {
-        path: 'src/pages',
-      } satisfies pluginContentPagesOptions,
     ],
     [
       '@docusaurus/plugin-google-gtag',
@@ -108,18 +103,17 @@ const config: Config = {
       title: 'Wiki Minecraft-France Survie',
       logo: {
         alt: 'Logo de Minecraft-France Survie',
-        src: 'img/logo.svg',
+        src: 'img/endy.png',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutoriel',
+          href: 'https://discord.gg/JNQFBbMbQK',
+          label: 'Discord',
+          position: 'right',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          href: 'https://map.mc-fr.fr',
+          label: 'Dynmap',
           position: 'right',
         },
       ],
@@ -128,46 +122,50 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Réseaux sociaux',
           items: [
             {
-              label: 'Tutoriel',
-              to: '/docs/intro',
+              label: 'TikTok',
+              href: 'https://www.tiktok.com/@mcfrsurvie',
+            },
+            {
+              label: 'Youtube',
+              href: 'https://www.youtube.com/@Minecraft-France-Survie',
+            },
+            {
+              label: 'Instagram',
+              href: 'https://www.instagram.com/mcfrsurvie/',
             },
           ],
         },
         {
-          title: 'Communauté',
+          title: 'Liens utiles',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'Plus',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Dynmap du serveur',
+              href: 'https://map.mc-fr.fr',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/Minecraft-France-FR/Wiki',
+            },
+          ],
+        },
+        {
+          title: 'En savoir plus',
+          items: [
+            {
+              label: 'Discord',
+              href: 'https://discord.gg/JNQFBbMbQK',
+            },
+            {
+              label: 'Articles sur le serveur Minecraft',
+              href: 'https://www.minecraft-france.fr/serveur-minecraft/',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} - Serveur minecraft de la Communauté Minecraft-France. Non approuvé ou associé à Mojang Studios ou Microsoft.`,
     },
     prism: {
       theme: prismThemes.github,
