@@ -1,41 +1,58 @@
-# Website
+# Wiki Minecraft-France
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Official wiki for the **Minecraft France** server, built with [Docusaurus](https://docusaurus.io/).
 
 ## Installation
 
 ```bash
-yarn
+npm run dev
 ```
 
 ## Local Development
 
 ```bash
-yarn start
+npm start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Starts a local development server with live hot-reloading.
 
 ## Build
 
 ```bash
-yarn build
+npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Generates static files into the `build/` directory.
 
-## Deployment
-
-Using SSH:
+## Preview the Build Locally
 
 ```bash
-USE_SSH=true yarn deploy
+npm run serve
 ```
 
-Not using SSH:
+## TypeScript Check
 
 ```bash
-GIT_USER=<Your GitHub username> yarn deploy
+npm typecheck
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Project Structure
+
+```
+src/
+└── wiki/               # Wiki content (.md / .mdx files)
+    ├── accueil.mdx     # Home page
+    ├── commandes.md
+    ├── jouer/
+    ├── le-serveur/
+    ├── les-bases/
+    ├── les-claims/
+    └── l-economie/
+static/
+└── img/                # Static images
+```
+
+## Contributing
+
+Wiki pages are Markdown (`.md`) or MDX (`.mdx`) files located in `src/wiki/`.  
+Each folder contains a `_category_.json` file that defines the category name and its position in the sidebar.
